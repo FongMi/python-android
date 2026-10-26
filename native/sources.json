@@ -1,0 +1,60 @@
+{
+  "chaquopy": "1f63c93d8beaf7062fbe51888ab9235475df3bb8",
+  "rust": "1.85.0",
+  "target": "3.10.22-0",
+  "packages": {
+    "chaquopy-libxml2": {
+      "version": "2.9.8",
+      "directory": "libxml2-2.9.8",
+      "url": "https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.8.tar.xz",
+      "sha256": "dcca21d624bbbe094fcc104e1f15f2eacfb65aecd0e38ed220aeca56b62c81e2"
+    },
+    "chaquopy-libxslt": {
+      "version": "1.1.32",
+      "directory": "libxslt-1.1.32",
+      "url": "https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.32.tar.xz",
+      "sha256": "b7da90eaa6b0dae9e9a3769e29a757342eef0edb9a7b431424814375414422af"
+    },
+    "cryptography": {
+      "version": "50.0.2",
+      "url": "https://files.pythonhosted.org/packages/9d/af/182eb91b0df3fe75c4d9f26fe70684569566745f6ba7e5c9c73a862c5252/cryptography-50.0.2.tar.gz",
+      "sha256": "7b46165bb56eb4704e2eaaf86f3c940d19154535d9b0ca7d6d590b04060e00d5"
+    },
+    "cffi": {
+      "version": "2.0.0",
+      "url": "https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz",
+      "sha256": "44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529"
+    },
+    "pycryptodome": {
+      "version": "3.21.0",
+      "url": "https://files.pythonhosted.org/packages/13/52/13b9db4a913eee948152a079fe58d035bd3d1a519584155da8e786f767e6/pycryptodome-3.21.0.tar.gz",
+      "sha256": "f7787e0d469bdae763b876174cf2e6c0f7be79808af26b1da96f1a64bcf47297"
+    },
+    "lxml": {
+      "version": "5.3.0",
+      "url": "https://files.pythonhosted.org/packages/e7/6b/20c3a4b24751377aaa6307eb230b66701024012c29dd374999cc92983269/lxml-5.3.0.tar.gz",
+      "sha256": "4e109ca30d1edec1ac60cdbe341905dc3b8f55b16855e03a54aaf59e51ec8c6f"
+    }
+  },
+  "abis": {
+    "arm64-v8a": {
+      "targetSha256": "0598a69c6d0cb24b70770168487af9965814ec93a2ac752a019c6a154110e4b9",
+      "libffi": "chaquopy_libffi-3.3-3-py3-none-android_24_arm64_v8a.whl",
+      "libffiSha256": "86873c2f8e5e43b07b72233bf35e06ad8dae41ba98e0556202d61d00d7ad952f"
+    },
+    "armeabi-v7a": {
+      "targetSha256": "01d3df9268f4821024bcb49a49a4e4507c0e155e933cb8ccda2b6399e8a2cdd8",
+      "libffi": "chaquopy_libffi-3.3-2-py3-none-android_16_armeabi_v7a.whl",
+      "libffiSha256": "8e9c18da8173747ffd7a26df408b4137e9756f856a247c617fa43270f86baef8"
+    }
+  },
+  "buildInputs": {
+    "xz": {
+      "version": "5.4.6",
+      "file": "xz-5.4.6.tar.gz",
+      "url": "https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz",
+      "sha256": "aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c",
+      "build": "1"
+    }
+  }
+}

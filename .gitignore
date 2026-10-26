@@ -1,0 +1,6 @@
+/native/build/
+/artifacts/
+/release/
+__pycache__/
+*.pyc
+tests/

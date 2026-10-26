@@ -1,0 +1,49 @@
+{
+  "chaquopy": "75197ed5c8280c38881af0e03fede591f1abc11e",
+  "chaquopyVersion": "17.1.0",
+  "sourceDeps": "5521f2c16ee87dd7f9d081421351f675fac2ee45",
+  "ndk": "27.3.13750724",
+  "sources": {
+    "python": {
+      "version": "3.10.22",
+      "file": "Python-3.10.22.tgz",
+      "url": "https://www.python.org/ftp/python/3.10.22/Python-3.10.22.tgz",
+      "sha256": "9448b34d16f8e3db0964ac3ed9fb283197747543c2c021f283ffd2c8b7287357"
+    },
+    "openssl": {
+      "version": "3.5.9",
+      "file": "openssl-3.5.9.tar.gz",
+      "url": "https://github.com/openssl/openssl/releases/download/openssl-3.5.9/openssl-3.5.9.tar.gz",
+      "sha256": "603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a",
+      "build": "0"
+    },
+    "sqlite": {
+      "version": "3.53.4",
+      "file": "sqlite-autoconf-3530400.tar.gz",
+      "url": "https://www.sqlite.org/2026/sqlite-autoconf-3530400.tar.gz",
+      "sha256": "0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c",
+      "build": "0"
+    },
+    "bzip2": {
+      "version": "1.0.8",
+      "file": "bzip2-1.0.8.tar.gz",
+      "url": "https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz",
+      "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+      "build": "3"
+    },
+    "libffi": {
+      "version": "3.4.4",
+      "file": "libffi-3.4.4.tar.gz",
+      "url": "https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz",
+      "sha256": "d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676",
+      "build": "3"
+    },
+    "xz": {
+      "version": "5.4.6",
+      "file": "xz-5.4.6.tar.gz",
+      "url": "https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz",
+      "sha256": "aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c",
+      "build": "1"
+    }
+  }
+}
