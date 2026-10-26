@@ -1,0 +1,32 @@
+diff --git a/server/pypi/build-wheel.py b/server/pypi/build-wheel.py
+--- a/server/pypi/build-wheel.py
++++ b/server/pypi/build-wheel.py
+@@ -489,6 +489,8 @@ class WheelBuilder:
+         ]
+         reqs_lib_dir = f"{self.host_env}/chaquopy/lib"
+         for filename in os.listdir(reqs_lib_dir):
++            if filename == "libpython3.so":
++                continue
+             for pattern, repl in SONAME_PATTERNS:
+                 link_filename = re.sub(pattern, repl, filename)
+                 if link_filename in self.standard_libs:
+@@ -663,6 +665,7 @@ class WheelBuilder:
+             "RUSTFLAGS": " ".join([
+                 f"-C linker={env['CC']}",
+                 f"-L native={self.host_env}/chaquopy/lib",
++                f"-l dylib=python{self.python}",
+                 *[f"-C link-arg={arg}" for arg in env["LDFLAGS"].split() if arg.startswith("-Wl")],
+             ]),
+             "CARGO_BUILD_TARGET": tool_prefix,
+diff --git a/target/android-env.sh b/target/android-env.sh
+--- a/target/android-env.sh
++++ b/target/android-env.sh
+@@ -59,7 +59,7 @@
+ done
+ 
+ export CFLAGS="-D__BIONIC_NO_PAGE_SIZE_MACRO"
+-export LDFLAGS="-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,-z,max-page-size=16384"
++export LDFLAGS="-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384"
+ 
+ # Unlike Linux, Android does not implicitly use a dlopened library to resolve
+ # relocations in subsequently-loaded libraries, even if RTLD_GLOBAL is used
