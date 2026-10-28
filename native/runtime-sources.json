@@ -1,6 +1,6 @@
 {
-  "chaquopy": "75197ed5c8280c38881af0e03fede591f1abc11e",
-  "chaquopyVersion": "17.1.0",
+  "chaquopy": "1f63c93d8beaf7062fbe51888ab9235475df3bb8",
+  "chaquopyVersion": "17.2.0",
   "sourceDeps": "5521f2c16ee87dd7f9d081421351f675fac2ee45",
   "ndk": "27.3.13750724",
   "sources": {

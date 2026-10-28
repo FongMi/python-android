@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: chaquo/chaquopy
-          ref: 75197ed5c8280c38881af0e03fede591f1abc11e
+          ref: 1f63c93d8beaf7062fbe51888ab9235475df3bb8
           path: .runtime-source
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
