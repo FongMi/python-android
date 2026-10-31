@@ -5,7 +5,8 @@ import shutil
 from pathlib import Path
 from zipfile import ZipFile
 
-from native.verify import MACHINES, verify_library, verify_wheel
+from native.pure import MANIFEST, verify_artifacts
+from native.verify import MACHINES, packages_for_abi, verify_library, verify_wheel
 
 
 ROOT = Path(__file__).resolve().parent
@@ -24,6 +25,13 @@ def copy_asset(source, output, expected):
     shutil.copyfile(source, output / source.name)
 
 
+def verify_wheel_set(wheels, inputs, abi):
+    expected = {(name.replace("-", "_"), package["version"]) for name, package in packages_for_abi(inputs, abi).items()}
+    actual = {tuple(wheel["file"].split("-")[:2]) for wheel in wheels}
+    if len(wheels) != len(expected) or actual != expected:
+        raise ValueError(f"Incomplete or unexpected wheels: {abi}")
+
+
 def verify_runtime(path, report, abi):
     with ZipFile(path) as archive:
         if archive.testzip() is not None or set(archive.namelist()) != {library["path"] for library in report["libraries"]}:
@@ -31,6 +39,14 @@ def verify_runtime(path, report, abi):
         for library in report["libraries"]:
             if verify_library(library["path"], archive.read(library["path"]), abi) != library:
                 raise ValueError(f"Native provenance mismatch: {library['path']}")
+
+
+def package_pure_wheels(artifacts, output):
+    directory = artifacts / "wheels-pure"
+    report = verify_artifacts(directory)
+    for wheel in report["wheels"]:
+        copy_asset(directory / wheel["file"], output, wheel["sha256"])
+    (output / MANIFEST).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def package(artifacts, output, producer):
@@ -42,8 +58,7 @@ def package(artifacts, output, producer):
     for abi in MACHINES:
         wheel_dir = artifacts / ("wheels-" + abi)
         report = read_report(wheel_dir / f"provenance-{abi}.json", abi, wheel_inputs)
-        if len(report["wheels"]) != 6:
-            raise ValueError(f"Incomplete wheels: {abi}")
+        verify_wheel_set(report["wheels"], wheel_inputs, abi)
         for wheel in report["wheels"]:
             path = wheel_dir / wheel["file"]
             if path.name != wheel["file"] or verify_wheel(path, abi) != wheel:
@@ -59,7 +74,8 @@ def package(artifacts, output, producer):
         copy_asset(path, output, report["sha256"])
         runtime["abis"][abi] = report
     for name, report in [("wheels-manifest.json", wheels), ("native-bundles-manifest.json", runtime)]:
-        (output / name).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        (output / name).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
+    package_pure_wheels(artifacts, output)
 
 
 def main():

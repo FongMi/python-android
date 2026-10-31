@@ -1,0 +1,12 @@
+{
+  "package": {
+    "name": "pywasm",
+    "version": "1.0.8",
+    "url": "https://files.pythonhosted.org/packages/40/ad/a8e9f90870697df8c91d26141317704f24844981edf2dcdfa9f6ac4e4aee/pywasm-1.0.8.tar.gz",
+    "sha256": "bdfb0b03394c601254caee415f3982107887a04ec7f40751ed878130d2ab7e15"
+  },
+  "buildRequirements": {
+    "setuptools": "80.9.0",
+    "wheel": "0.45.1"
+  }
+}
